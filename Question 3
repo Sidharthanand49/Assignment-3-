@@ -1,18 +1,24 @@
 class Solution {
-    public int[][] transpose(int[][] matrix) {
-          int rows = matrix.length;
-        int cols = matrix[0].length;
+    public int[] sortedSquares(int[] nums) {
+        int n = nums.length;
+        int[] result = new int[n];
+        int left = 0;
+        int right = n - 1;
 
-        // Create a new matrix with swapped dimensions
-        int[][] transposeMatrix = new int[cols][rows];
-
-        // the transpose matrix
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                transposeMatrix[j][i] = matrix[i][j];
+        for (int i = n - 1; i >= 0; i--) {
+            int square;
+            if (Math.abs(nums[left]) > Math.abs(nums[right])) {
+                square = nums[left] * nums[left];
+                left++;
+            } else {
+                square = nums[right] * nums[right];
+                right--;
             }
+            result[i] = square;
         }
 
-        return transposeMatrix;
+       return result;
+   
+
     }
 }
